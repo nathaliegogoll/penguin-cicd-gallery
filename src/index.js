@@ -14,11 +14,11 @@ const template = s => {
     return s.pictures.map(pic => ` 
         <section class="card">
         <figure class="card__figure">
-        <img class="card__img" src="${pic.urls.thumb}" alt="${pic.alt_description}">
+        <img class="card__img" src="${pic.urls.regular}" alt="${pic.alt_description}">
         <figcaption class="card__description">${pic.alt_description}</figcaption>
         </figure>
         </section>
-        `);
+        `).join('');
   }
   return '<span> No State </span>';
 };

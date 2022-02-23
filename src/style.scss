@@ -18,6 +18,22 @@
     }
 }
 
+.main__search {
+  font-size: 3rem;
+  text-align: center;
+}
+.card{
+    margin: 2rem auto;
+    text-align: center;
+    .card__img {
+      width: 80%;
+      object-fit: cover;
+    }
+    .card__description{
+        display: none;
+    }
+}
+
 .footer {
     position: sticky;
     text-align: center;
