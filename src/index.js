@@ -2,22 +2,22 @@ import './style.scss';
 
 import getPictures from './api';
 
-const title = document.querySelector('h1');
-
 const state = {
   value: '',
   pictures: [],
 };
 
+let count = window.history.state?.count || 0;
+
 const template = s => {
   if (s) {
     return s.pictures.map(pic => ` 
-    <section class="card">
-      <figure class="card__figure">
+        <section class="card">
+        <figure class="card__figure">
         <img class="card__img" src="${pic.urls.thumb}" alt="${pic.alt_description}">
         <figcaption class="card__description">${pic.alt_description}</figcaption>
-      </figure>
-    </section>
+        </figure>
+        </section>
         `);
   }
   return '<span> No State </span>';
@@ -27,32 +27,29 @@ const render = (htmlString, el) => {
   el.innerHTML = htmlString;
 };
 
-/* const update = newState => {
+const update = newState => {
   window.history.pushState(
     { ...state, ...newState },
     'HISTORY',
     `index.html#${count}`,
   ), // patch state, overwrite old data with new properties
   window.dispatchEvent(new Event('statechange'));
-}; */
+};
 
-title.addEventListener('click', async () => {
-  const response = await getPictures('penguin');
+const input = document.querySelector('#search');
+
+input.addEventListener('search', async () => {
+  const response = await getPictures(input.value);
   const newState = {
-    value: 'search',
+    value: input.value,
     pictures: [...response.results],
-    count: state.count + 1,
+    count: ++count,
   };
-  console.log(newState.pictures.length);
-  render(template(newState), document.querySelector('#gallery'));
-  // const element = document.createElement('img');
-  // element.src = response.results['0'].urls.full;
-  // app.append(element);
+  update(newState);
 });
 
-/* window.addEventListener('statechange', () => {
+window.addEventListener('statechange', () => {
   render(template(window.history.state), document.querySelector('#gallery'));
 });
 
 render(template(window.history.state), document.querySelector('#gallery'));
- */
