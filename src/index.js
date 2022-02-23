@@ -1,7 +1,13 @@
 import './style.scss';
 
-const heading = document.createElement('h1');
-heading.textContent = 'Penguins are the best :)';
+import getPictures from './api';
 
 const app = document.querySelector('#root');
-app.append(heading);
+const title = document.querySelector('h1');
+
+title.addEventListener('click', async () => {
+  const response = await getPictures('penguin');
+  const element = document.createElement('img');
+  element.src = response.results['0'].urls.full;
+  app.append(element);
+});
