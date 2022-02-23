@@ -4,8 +4,23 @@
     <title>CCID Gallery</title>
   </head>
 
-  <body>
-    <h1>Penguin Gallery</h1>
-    <div id="root"></div>
+  <body class="page">
+    <header class="header">
+    <h1 class="header__title">Penguin Gallery</h1>
+    </header>
+    <main id="root" class="main">
+      <section class="main__search">
+        <label for="search">Search gallery:</label>
+        <input id="search" type="search" name="search">
+      </section>
+      <section id="gallery" class="main__gallery"></section>
+    </main>
+    <footer class="footer">
+        <nav class="footer__nav">
+            <button type="button" class="nav__prev">Prev</button>
+            <button type="button" class="nav__next">Next</button>
+        </nav>
+        <a href="https://github.com/marinakinalone/penguin-cicd-gallery" target="_blank" class="footer__link">github</a>
+    </footer>
   </body>
 </html>
