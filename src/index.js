@@ -7,7 +7,7 @@ const state = {
   pictures: [],
 };
 
-let count = window.history.state?.count || 0;
+// let count = window.history.state?.count || 0;
 
 const template = s => {
   if (s) {
@@ -24,15 +24,14 @@ const template = s => {
 };
 
 const render = (htmlString, el) => {
-  el.innerHTML = htmlString;
+  const element = el;
+  element.innerHTML = htmlString;
 };
 
 const update = newState => {
   window.history.pushState(
     { ...state, ...newState },
-    'HISTORY',
-    `index.html#${count}`,
-  ), // patch state, overwrite old data with new properties
+  ); // patch state, overwrite old data with new properties
   window.dispatchEvent(new Event('statechange'));
 };
 
@@ -43,7 +42,7 @@ input.addEventListener('search', async () => {
   const newState = {
     value: input.value,
     pictures: [...response.results],
-    count: ++count,
+    // count: ++count,
   };
   update(newState);
 });
