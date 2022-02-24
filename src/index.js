@@ -20,7 +20,7 @@ const template = s => {
         </section>
         `).join('');
   }
-  return '<span> No State </span>';
+  return '<span></span>';
 };
 
 const render = (htmlString, el) => {
