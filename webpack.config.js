@@ -1,6 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack');
+require('dotenv').config({
+  path: path.join(__dirname, '.env'),
+});
 
 module.exports = {
   entry: {
@@ -16,6 +20,9 @@ module.exports = {
       title: 'webpack Boilerplate',
       template: path.resolve(__dirname, './src/template.html'), // template file
       filename: 'index.html', // output file
+    }),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env),
     }),
   ],
   module: {
