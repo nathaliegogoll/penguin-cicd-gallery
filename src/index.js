@@ -30,7 +30,7 @@ const render = (htmlString, el) => {
 
 const update = newState => {
   window.history.pushState(
-    { ...state, ...newState },
+    { ...state, ...newState },''
   ); // patch state, overwrite old data with new properties
   window.dispatchEvent(new Event('statechange'));
 };
