@@ -1,4 +1,4 @@
-# Salt Gallery - From development to produc
+# Salt Gallery - From development to production
 
 ## A. Scenario
 
