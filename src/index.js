@@ -12,12 +12,14 @@ const state = {
 const template = s => {
   if (s) {
     return s.pictures.map(pic => ` 
-        <section class="card">
-        <figure class="card__figure">
-        <img class="card__img" src="${pic.urls.regular}" alt="${pic.alt_description}">
-        <figcaption class="card__description">${pic.alt_description}</figcaption>
-        </figure>
-        </section>
+        <div class="card flip-card">
+          <div class="card__figure flip-card-inner"> 
+            <div class="flip-card-front">
+              <img class="card__img"  src="${pic.urls.regular}" alt="${pic.alt_description}">
+              </div>
+            <div class="card__description flip-card-back">${pic.alt_description}</div>
+          </div>
+        </div>
         `).join('');
   }
   return '<span></span>';
